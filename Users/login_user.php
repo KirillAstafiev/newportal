@@ -54,11 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $user = $entries[0];
 
                 $response = [
-                    "status" => "success",
-                    "username" => $username,
-                    "first_name" => $user["givenname"][0] ?? "Не указано",
-                    "last_name" => $user["sn"][0] ?? "Не указано",
-                    "email" => $user["mail"][0] ?? "Не указано"
+                    "user" => [
+                        "username" => $username,
+                        "first_name" => $user["givenname"][0] ?? "Не указано",
+                        "last_name" => $user["sn"][0] ?? "Не указано",
+                        "email" => $user["mail"][0] ?? "Не указано"
+                    ]
                 ];
             } else {
                 $response = ["error" => "Пользователь не найден в LDAP."];
